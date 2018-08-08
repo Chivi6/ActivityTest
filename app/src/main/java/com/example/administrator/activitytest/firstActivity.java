@@ -2,6 +2,7 @@ package com.example.administrator.activitytest;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,16 +12,17 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class firstActivity extends AppCompatActivity {
-
+    String str;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mylayout);
+
         Button but1 = findViewById(R.id.button_1);
         but1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(firstActivity.this,"你按下了按钮",Toast.LENGTH_SHORT
+                Toast.makeText(firstActivity.this,str,Toast.LENGTH_SHORT
                 ).show();
             }
         });
@@ -36,10 +38,18 @@ public class firstActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent in=new Intent("com.example.administrator.activitytest.ACTION_START");
                 in.addCategory("com.example.administrator.activitytest.MY_CATEGORY");
-                startActivity(in);
+                in.putExtra("fdata","打开了secondactivity");
+                startActivityForResult(in,1);
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode==1&resultCode==RESULT_OK){
+            str=data.getStringExtra("sdata");
+        }
     }
 
     @Override
