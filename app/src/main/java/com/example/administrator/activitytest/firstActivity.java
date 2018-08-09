@@ -62,7 +62,7 @@ public class firstActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.add:
-                Toast.makeText(this,"你为什么要点这个按钮",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"你为什么要点这个按钮?",Toast.LENGTH_SHORT).show();
                         break;
             case R.id.remove:
                 Toast.makeText(this,"按下去很好玩么",Toast.LENGTH_SHORT).show();
